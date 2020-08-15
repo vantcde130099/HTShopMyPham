@@ -1,22 +1,23 @@
 package com.shop.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
-import org.springframework.lang.NonNull;
 
 @Entity
 public class Customer {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
-	@NonNull
+	@Column(nullable = false, unique = true)
 	private String userName;
-	@NonNull
+	@Column(nullable = false)
 	private String password;
+	@Column(nullable = false)
 	private String FirstName;
+	@Column(nullable = false)
 	private String LastName;
 	private String address;
 	private String mobile;

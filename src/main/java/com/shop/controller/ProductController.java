@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 
 import com.shop.model.Product;
 import com.shop.service.ProductService;
@@ -14,7 +14,7 @@ import com.shop.service.ProductService;
 public class ProductController {
 	@Autowired
 	ProductService productService;
-	@RequestMapping("products")
+	@GetMapping("products")
 	public String showListProduct(Model model) {
 		List<Product> allProduct = productService.getAll();
 		model.addAttribute("allProduct", allProduct);

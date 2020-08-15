@@ -9,6 +9,7 @@ public interface CustomerRepository extends JpaRepository<Customer, Integer>{
 	
 	Customer findByUserNameAndPassword(String username, String password);
 	
+	Customer findByUserName(String username);
 //	public boolean authenticate(Customer customer) {
 //		if(customer.getUserName().equals(customer.getPassword())) {
 //			return true;

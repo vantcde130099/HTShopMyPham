@@ -6,6 +6,9 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<form th:action="@{/logout}" method="post">
+		<input type="submit" value="Sign Out" />
+	</form>
 	<table>
 		<thead>
 			<tr>
@@ -19,18 +22,18 @@
 			</tr>
 		</thead>
 		<tbody>
-			
-				<tr th:each ="product : ${allProduct }">
-					<td th:text="${product.id }">id</td>
-					<td th:text="${product.productName }">Product Name</td>
-					<td th:text="${product.origin }">Origin</td>
-					<td th:text="${product.price }">Price</td>
-					<td th:text="${product.description }">Description</td>
-					<td th:text="${product.unitsInStock }">Units in Stock</td>
-					<td th:text="${product.weight }">Weight</td>
 
-				</tr>
-			
+			<tr th:each="product : ${allProduct }">
+				<td th:text="${product.id }">id</td>
+				<td th:text="${product.productName }">Product Name</td>
+				<td th:text="${product.origin }">Origin</td>
+				<td th:text="${product.price }">Price</td>
+				<td th:text="${product.description }">Description</td>
+				<td th:text="${product.unitsInStock }">Units in Stock</td>
+				<td th:text="${product.weight }">Weight</td>
+
+			</tr>
+
 		</tbody>
 	</table>
 </body>
