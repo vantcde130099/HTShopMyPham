@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Spring MVC + Thymeleaf</title>
+</head>
+<body>
+	<h1>Hello: Spring MVC + Thymeleaf</h1>
+	<p th:text="'message: ' + ${message} + '!'" />
+	<a th:href="@{/products}">show product</a>
+	<a th:href="@{/showRegister}">sign in</a>
+	<a th:href="@{/showLogin}">log in</a>
+</body>
+</html>
