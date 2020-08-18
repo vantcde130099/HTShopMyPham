@@ -7,12 +7,12 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.shop.model.Customer;
-import com.shop.service.CustomerService;
+import com.shop.service.CustomerDetailService;
 
 @Controller
 public class LoginController {
 	@Autowired
-	private CustomerService customerService;
+	private CustomerDetailService customerService;
 
 	@RequestMapping(value = "/showLogin")
 	public String showLogin(Model model) {
@@ -20,7 +20,7 @@ public class LoginController {
 		return "login";
 	}
 
-	@RequestMapping(value = "login") // action
+	@RequestMapping(value = "/login") // action
 	public String login(@ModelAttribute("Customer") Customer customer, Model model) {
 		if (customerService.login(customer)) {
 			model.addAttribute("Customer", customer);

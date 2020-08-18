@@ -21,6 +21,10 @@ public class Customer {
 	private String LastName;
 	private String address;
 	private String mobile;
+	@Column(nullable = false)
+	private String authority = "ROLE_USERNAME";
+	@Column(nullable = false)
+	private boolean enabled = true;
 	public Customer(String userName, String password, String firstName, String lastName, String address, String mobile) {
 		super();
 		this.userName = userName;
@@ -32,6 +36,9 @@ public class Customer {
 	}
 	
 	
+
+
+
 	public Customer(String userName, String password) {
 		super();
 		this.userName = userName;
@@ -84,6 +91,27 @@ public class Customer {
 	public void setMobile(String mobile) {
 		this.mobile = mobile;
 	}
+
+
+	public String getAuthority() {
+		return authority;
+	}
+
+
+	public void setAuthority(String authority) {
+		this.authority = authority;
+	}
+
+
+	public boolean isEnabled() {
+		return enabled;
+	}
+
+
+	public void setEnabled(boolean enabled) {
+		this.enabled = enabled;
+	}
+	
 	
 	
 }

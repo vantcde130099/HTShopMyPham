@@ -27,10 +27,6 @@ public class CustomCustomerDetail implements UserDetails{
 		this.customer = customer;
 	}
 
-	public CustomCustomerDetail() {
-		super();
-	}
-
 	public CustomCustomerDetail(Customer customer) {
 		super();
 		this.customer = customer;
