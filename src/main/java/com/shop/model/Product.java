@@ -2,6 +2,7 @@ package com.shop.model;
 
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -15,9 +16,10 @@ public class Product {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
-	private String productName;
+	private String name;
 	private String origin;
 	private float weight;
+	@Column(name = "ntext")
 	private String description;
 	private float price;
 	private int unitsInStock;
@@ -36,10 +38,10 @@ public class Product {
 	
 	
 
-	public Product(String productName, String origin, float weight, String description, float price, int unitsInStock,
+	public Product(String name, String origin, float weight, String description, float price, int unitsInStock,
 			Brand brand, ProductCategory category, List<Color> listColor) {
 		super();
-		this.productName = productName;
+		this.name = name;
 		this.origin = origin;
 		this.weight = weight;
 		this.description = description;
@@ -52,9 +54,9 @@ public class Product {
 
 
 
-	public Product(String productName, String origin, float weight, String description, float price, int unitsInStock) {
+	public Product(String name, String origin, float weight, String description, float price, int unitsInStock) {
 		super();
-		this.productName = productName;
+		this.name = name;
 		this.origin = origin;
 		this.weight = weight;
 		this.description = description;
@@ -97,11 +99,11 @@ public class Product {
 	public void setid(int id) {
 		this.id = id;
 	}
-	public String getProductName() {
-		return productName;
+	public String getName() {
+		return name;
 	}
-	public void setProductName(String productName) {
-		this.productName = productName;
+	public void setName(String name) {
+		this.name = name;
 	}
 	public float getPrice() {
 		return price;

@@ -1,5 +1,6 @@
 package com.shop.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -11,6 +12,7 @@ public class Payment {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 	private String name;
+	@Column(columnDefinition = "ntext")
 	private String description;
 	public Payment(String name, String description) {
 		super();

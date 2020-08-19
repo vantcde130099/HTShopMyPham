@@ -1,13 +1,11 @@
 package com.shop.security;
 
 import java.util.Collection;
-import java.util.Collections;
 
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import com.shop.model.Customer;
+import com.shop.model.User;
 
 public class CustomCustomerDetail implements UserDetails{
 
@@ -15,38 +13,40 @@ public class CustomCustomerDetail implements UserDetails{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	Customer customer;
+	User user;
 	
 	
 	
-	public Customer getCustomer() {
-		return customer;
-	}
-
-	public void setCustomer(Customer customer) {
-		this.customer = customer;
-	}
-
-	public CustomCustomerDetail(Customer customer) {
+	
+	public CustomCustomerDetail(User user) {
 		super();
-		this.customer = customer;
+		this.user = user;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
-		return Collections.singleton(new SimpleGrantedAuthority("ROLE_CUSTOMER"));
+		//return Collections.singleton(user.getAuthorities().toArray());
+		return null;
 	}
 
 	@Override
 	public String getPassword() {
 		// TODO Auto-generated method stub
-		return customer.getPassword();
+		return user.getPassword();
 	}
 
 	@Override
 	public String getUsername() {
 		// TODO Auto-generated method stub
-		return customer.getUserName();
+		return user.getUserName();
 	}
 
 	@Override

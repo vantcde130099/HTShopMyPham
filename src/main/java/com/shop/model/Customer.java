@@ -1,51 +1,44 @@
 package com.shop.model;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Customer {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
-	@Column(nullable = false, unique = true)
-	private String userName;
-	@Column(nullable = false)
-	private String password;
-	@Column(nullable = false)
-	private String FirstName;
-	@Column(nullable = false)
-	private String LastName;
+	@Column(name = "fullname", columnDefinition = "nvarchar(50)")
+	private String fullName;
+	@Column(name = "Address", columnDefinition = "nvarchar(50)")
 	private String address;
+	@Column(columnDefinition = "char(10)")
 	private String mobile;
-	@Column(nullable = false)
-	private String authority = "ROLE_USERNAME";
-	@Column(nullable = false)
-	private boolean enabled = true;
-	public Customer(String userName, String password, String firstName, String lastName, String address, String mobile) {
+	@OneToOne
+	User user;
+	
+	@ManyToMany
+	@JoinTable(name = "liked_products",
+	joinColumns = @JoinColumn(name = "customer_id"),
+	inverseJoinColumns = @JoinColumn(name = "product_id"))
+	private List<Product> likedProducts;
+	
+	public Customer(String fullName, String address, String mobile, User user) {
 		super();
-		this.userName = userName;
-		this.password = password;
-		FirstName = firstName;
-		LastName = lastName;
+		this.fullName = fullName;
 		this.address = address;
 		this.mobile = mobile;
+		this.user = user;
 	}
-	
-	
-
-
-
-	public Customer(String userName, String password) {
-		super();
-		this.userName = userName;
-		this.password = password;
-	}
-
-
 	public Customer() {
 		super();
 	}
@@ -55,29 +48,13 @@ public class Customer {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public String getUserName() {
-		return userName;
+
+
+	public String getFullName() {
+		return fullName;
 	}
-	public void setUserName(String userName) {
-		this.userName = userName;
-	}
-	public String getPassword() {
-		return password;
-	}
-	public void setPassword(String password) {
-		this.password = password;
-	}
-	public String getFirstName() {
-		return FirstName;
-	}
-	public void setFirstName(String firstName) {
-		FirstName = firstName;
-	}
-	public String getLastName() {
-		return LastName;
-	}
-	public void setLastName(String lastName) {
-		LastName = lastName;
+	public void setFullName(String fullName) {
+		this.fullName = fullName;
 	}
 	public String getAddress() {
 		return address;
@@ -93,25 +70,20 @@ public class Customer {
 	}
 
 
-	public String getAuthority() {
-		return authority;
+
+
+	public User getUser() {
+		return user;
 	}
 
 
-	public void setAuthority(String authority) {
-		this.authority = authority;
+
+
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 
-	public boolean isEnabled() {
-		return enabled;
-	}
-
-
-	public void setEnabled(boolean enabled) {
-		this.enabled = enabled;
-	}
-	
 	
 	
 }

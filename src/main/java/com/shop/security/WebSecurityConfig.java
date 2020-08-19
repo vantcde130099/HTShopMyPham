@@ -11,7 +11,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-import com.shop.service.CustomerDetailService;
+import com.shop.service.UserDetailService;
 
 /**
  * @author Vann
@@ -21,7 +21,7 @@ import com.shop.service.CustomerDetailService;
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 	@Autowired
-	CustomerDetailService customerDetailService;
+	UserDetailService customerDetailService;
 	
 	@Bean
 	public DaoAuthenticationProvider authenticationProvider() {
@@ -55,10 +55,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 		http
 				.authorizeRequests()
 				.antMatchers("/", "/home").permitAll()	// Cho phép tất cả mọi người truy cập vào 2 địa chỉ này
+				.antMatchers("/showRegister").hasRole("CUSTOMER")
+				.antMatchers("/products").hasRole("STAFF")
 				.anyRequest().authenticated()			// Tất cả các request khác đều cần phải xác thực mới được truy cập
 				.and()
 				.formLogin()							// Cho phép người dùng xác thực bằng form login
-				.defaultSuccessUrl("/products")
+				//.defaultSuccessUrl("/products")
 				.permitAll()							// Tất cả đều được truy cập vào địa chỉ này
 				.and()
 				.logout()								// Cho phép logout

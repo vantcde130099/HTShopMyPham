@@ -1,63 +1,77 @@
 package com.shop.model;
 
+import java.util.Date;
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 public class Staff {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
-	private String FirstName;
-	private String LastName;
-	private String username;
-	private String password;
+	@Column(name = "fullname", columnDefinition = "nvarchar(50)")
+	private String fullName;
+	@Column(columnDefinition = "char(10)")
 	private String mobile;
+	@Column(columnDefinition = "nvarchar(50)")
 	private String address;
+	@Column(name = "startedDate")
+	@Temporal(TemporalType.DATE)
+	private Date startedDate;
+	@OneToOne
+	User user;
 	public Staff() {
 		super();
 	}
-	public Staff(String firstName, String lastName, String username, String password, String mobile, String address) {
-		super();
-		FirstName = firstName;
-		LastName = lastName;
-		this.username = username;
-		this.password = password;
-		this.mobile = mobile;
-		this.address = address;
-	}
+
 	public int getId() {
 		return id;
 	}
-	public void setId(int id) {
-		this.id = id;
+
+
+	
+	public Staff(String fullName, String mobile, String address, Date startedDate) {
+		super();
+		this.fullName = fullName;
+		this.mobile = mobile;
+		this.address = address;
+		this.startedDate = startedDate;
 	}
-	public String getFirstName() {
-		return FirstName;
+	
+	
+
+	public Staff(String fullName, String mobile, String address, Date startedDate, User user) {
+		super();
+		this.fullName = fullName;
+		this.mobile = mobile;
+		this.address = address;
+		this.startedDate = startedDate;
+		this.user = user;
 	}
-	public void setFirstName(String firstName) {
-		FirstName = firstName;
+
+	public String getFullName() {
+		return fullName;
 	}
-	public String getLastName() {
-		return LastName;
+
+	public void setFullName(String fullName) {
+		this.fullName = fullName;
 	}
-	public void setLastName(String lastName) {
-		LastName = lastName;
+
+	public Date getStartedDate() {
+		return startedDate;
 	}
-	public String getUsername() {
-		return username;
+
+	public void setStartedDate(Date startedDate) {
+		this.startedDate = startedDate;
 	}
-	public void setUsername(String username) {
-		this.username = username;
-	}
-	public String getPassword() {
-		return password;
-	}
-	public void setPassword(String password) {
-		this.password = password;
-	}
+
 	public String getMobile() {
 		return mobile;
 	}
@@ -69,6 +83,14 @@ public class Staff {
 	}
 	public void setAddress(String address) {
 		this.address = address;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
 	}
 	
 	

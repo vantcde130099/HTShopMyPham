@@ -1,5 +1,6 @@
 package com.shop.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -10,8 +11,10 @@ public class ProductCategory {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
+	@Column(name = "parentid")
 	private int parentId;
 	private String name;
+	@Column(columnDefinition = "ntext")
 	private String description;
 	public ProductCategory() {
 		super();

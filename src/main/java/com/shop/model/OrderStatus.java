@@ -1,5 +1,6 @@
 package com.shop.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -10,6 +11,7 @@ public class OrderStatus {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int code;
+	@Column(columnDefinition = "ntext")
 	private String description;
 	
 	public OrderStatus() {

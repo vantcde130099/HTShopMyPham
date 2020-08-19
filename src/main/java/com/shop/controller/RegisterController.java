@@ -7,13 +7,15 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.shop.model.Customer;
-import com.shop.service.CustomerDetailService;
+import com.shop.service.CustomerService;
 
 
 @Controller
 public class RegisterController {
 	@Autowired
-	private CustomerDetailService customerService ;
+	private CustomerService customerService ;
+	
+	
 
 	@RequestMapping(value = "showRegister")
 	public String showRegister(Model model) {

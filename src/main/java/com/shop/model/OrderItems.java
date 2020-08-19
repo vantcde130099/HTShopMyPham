@@ -2,11 +2,14 @@ package com.shop.model;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 public class OrderItems {
@@ -14,6 +17,8 @@ public class OrderItems {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 	private int quantity;
+	@Column(name = "updatedate")
+	@Temporal(TemporalType.DATE)
 	private Date updatedDate;
 	@ManyToOne
 	private Product product;
