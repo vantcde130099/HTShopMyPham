@@ -19,12 +19,15 @@ public class RegisterController {
 
 	@RequestMapping(value = "showRegister")
 	public String showRegister(Model model) {
-		model.addAttribute("Customer", new Customer());
+		model.addAttribute("customer", new Customer());
+		
 		return "register";
 	}
 
 	@RequestMapping(value = "customerRegister")
-	public String Register(@ModelAttribute("Customer") Customer customer, Model model) {
+	public String Register(@ModelAttribute("customer") Customer customer, Model model) {
+
+		
 		if (customerService.register(customer)) {
 			model.addAttribute("Customer", new Customer());
 			model.addAttribute("success", "Registered, let login now!");

@@ -1,8 +1,7 @@
 package com.shop.model;
 
 import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -28,13 +27,16 @@ public class User {
 	private String password;
 	
 	@Column(name = "datecreated")
-	private Date dateCreated;
+	private Date dateCreated = new Date();
 	
 	@Column(nullable = false)
 	private boolean enabled = true;
 	
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "user", fetch = FetchType.EAGER)
-	private Set<Authorities> authorities = new HashSet<Authorities>();
+	@OneToMany(cascade = {
+            CascadeType.MERGE,
+            CascadeType.REFRESH
+        }, mappedBy = "user", fetch = FetchType.EAGER)
+	private List<Authorities> authorities;
 
 	
 	
@@ -42,7 +44,7 @@ public class User {
 		super();
 	}
 
-	public User(String userName, String password, Date dateCreated, Set<Authorities> authorities) {
+	public User(String userName, String password, Date dateCreated, List<Authorities> authorities) {
 		super();
 		this.userName = userName;
 		this.password = password;
@@ -74,11 +76,13 @@ public class User {
 		this.dateCreated = dateCreated;
 	}
 
-	public Set<Authorities> getAuthorities() {
+
+
+	public List<Authorities> getAuthorities() {
 		return authorities;
 	}
 
-	public void setAuthorities(Set<Authorities> authorities) {
+	public void setAuthorities(List<Authorities> authorities) {
 		this.authorities = authorities;
 	}
 

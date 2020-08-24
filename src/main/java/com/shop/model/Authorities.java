@@ -2,6 +2,7 @@ package com.shop.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -20,7 +21,7 @@ public class Authorities {
 	@Column(columnDefinition = "ntext")
 	private String description;
 	
-	@ManyToOne
+	@ManyToOne(optional = false, fetch = FetchType.EAGER)
 	@JoinColumn
 	private User user;
 

@@ -2,7 +2,7 @@
 <!DOCTYPE html >
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="ISO-8859-1">
+<meta charset="UTF-8">
 <title>Register Page</title>
 </head>
 <body>
@@ -11,27 +11,27 @@
 		<input type="submit" value="Sign Out" />
 	</form>
 	<p th:if="#{error=='true'}">Register Fail!</p>
-	<form action="#" th:action="@{customerRegister}" th:object="${Customer }" method="post">
+	<form action="#" th:action="@{customerRegister}" th:object="${customer}" method="post">
 		<table>
 				<tr>
 					<td><label>Full Name: </label></td>
-					<td><input type="text" id="fullName" name="fullName" th:value="*{fullName}" /></td>
+					<td><input type="text" id="fullName" name="fullName" th:field="*{fullName}" /></td>
 				</tr>
 				<tr>
 					<td><label>User Name: </label></td>
-					<td><input type="text" id="userName" name="userName" th:value="*{user.userName}" /></td>
+					<td><input type="text" id="userName" name="userName" th:field="*{user.userName}" /></td>
 				</tr>
 				<tr>
 					<td><label>Password: </label></td>
-					<td><input type="password" id="password" name="password" th:value="*{user.password}" /></td>
+					<td><input type="password" id="password" name="password" th:field="*{user.password}" /></td>
 				</tr>
 				<tr>
 					<td><label>Address: </label></td>
-					<td><input type="text" id="address" name="address" th:value="*{address}" /></td>
+					<td><input type="text" id="address" name="address" th:field="*{address}" /></td>
 				</tr>
 				<tr>
 					<td><label>Mobile number: </label></td>
-					<td><input type="text" id="mobile" name="mobile" th:value="*{mobile}" /></td>
+					<td><input type="text" id="mobile" name="mobile" th:field="*{mobile}" /></td>
 				</tr>
 				<tr>
 					<td><input type="submit" value="Sign in"></td>

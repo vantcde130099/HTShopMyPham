@@ -9,6 +9,12 @@ public class HomeController {
 	@GetMapping("/")
 	public String index(final Model model) {
 		model.addAttribute("message", "hello beo den");
-		return "index";
+		return "/index";
+	}
+	
+	@GetMapping("/home")
+	public String showHome(final Model model) {
+		
+		return "home";
 	}
 }
